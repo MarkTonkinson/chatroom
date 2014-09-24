@@ -1,6 +1,6 @@
-var app = angular.module('twitterClone');
+var app = angular.module('chatroom');
 
-app.service('parseService', function($http, $q){
+app.service('parseService', function($http, $q){  //remove the q?
   //Here you'll need to create two methods. One called postData and the other called getData.
 
 
@@ -9,7 +9,21 @@ app.service('parseService', function($http, $q){
   //Also, remember that $http returns a promise. So if you return the whole $http call (return $http(...)), you can then use .then in your controller.
   
   //postData method here
-
+  this.postData = function(message){
+    var deferred = $q.defer();
+    console.log(message);
+    $http({ //don't put object here, http is looking for an object
+      method: 'POST',
+      url: 'https://api.parse.com/1/classes/chat',
+      data:  {
+        text: message
+      } //revise this line
+    }).success(function(data){
+      deferred.resolve(data);
+      
+    })
+    return deferred.promise;
+  };
 
   //On the line below create a getData method. This method will retrieve data from the parse backend.
   //The url for the get request should be 'https://api.parse.com/1/classes/chat?order=-createdAt'
@@ -17,13 +31,21 @@ app.service('parseService', function($http, $q){
   /*Also, we want to be able to manipulate the data we get back from parse before we pass it back to our controller. The problem is 
   when we're making a request, we don't know when the response will come back. This sound like a perfect use case for a promise. We can 
   create a promise that resolves with the correct data from parse whenever our $http get requests finishes. 
-  /*
+  /*   Why does it say that we create the promise??****** It means when we write the $http we get a promise
   //Because of the way parse sends back their data, let's resolve our promise with data.data.results if you had the original parameter be date like below.
   /* 
     .then(function(data){
       deferred.resolve(data.data.results)
-    })
+    }) 
   */
-
+  // the suggested method would be for $q?????
   //getData method here
+  this.getData = function(){
+    return $http({
+      method: 'GET',
+      url: 'https://api.parse.com/1/classes/chat?order=-createdAt'
+    })
+  };
 });
+
+
