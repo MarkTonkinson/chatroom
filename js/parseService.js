@@ -17,7 +17,7 @@ app.service('parseService', function($http, $q){  //remove the q?
       url: 'https://api.parse.com/1/classes/chat',
       data:  {
         text: message
-      } //revise this line
+      } //have to use the right key!  text was the correct key for the object
     }).success(function(data){
       deferred.resolve(data);
       

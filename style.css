@@ -7,19 +7,60 @@ body {
   height: 95%;
   width: 100%;
   font-family: sans-serif;
-  background-image: url('AutumnLeaves.jpg');
-  background-size: cover;
+  background: rgba(25,25,25,1);
+  background-image: url(http://fc02.deviantart.net/fs71/f/2012/013/e/b/distant_mountains_by_photonfossil-d4m9er2.jpg);
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .main-container {
   width: 75%;
-  margin: 10px auto;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 5px;
+  height:90%;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0;
   border-radius: 10px;
 }
 
+header {
+  background-color:black;
+  padding:0;
+  
+}
+
+form {
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+select {
+  text-align:center;
+}
+
 .main-container h1 {
+  text-align: center;
+}
+
+
+.innerContainer {
+  width:75%;
+  display:inline-block;
+
+}
+
+.chat {
+  width: 80%;
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+
+.date {
+  width:15%;
   text-align: center;
 }
 

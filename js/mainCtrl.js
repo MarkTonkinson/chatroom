@@ -26,11 +26,16 @@ app.controller('mainCtrl', function($scope, parseService){
    });
    $scope.message='';
   }
+  $scope.date = new Date();
 
+  $scope.convertDateTime = function(){
+    $scope.date = Date.parse($scope.search);
+  }
 
   //uncomment this code when your getParseData function is finished
   //This goes and gets new data every second, which mimicking a chat room experience.
-  // setInterval(function(){
-  //   $scope.getParseData();
-  // }, 1000)
+  setInterval(function(){
+    updateMessages();
+   }, 1000)
 })
+
